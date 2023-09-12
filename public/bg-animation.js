@@ -39,21 +39,26 @@ class Square {
   }
 
   calculateOpacity() {
-    if (
-      this.x + squareSize / 2 - mouse.x < squareSize / 2 &&
-      this.x + squareSize / 2 - mouse.x > -squareSize / 2 &&
-      this.y + squareSize / 2 - mouse.y < squareSize / 2 &&
-      this.y + squareSize / 2 - mouse.y > -squareSize / 2
-    )
-      return 1;
+    const squareX = this.x + squareSize / 2 - mouse.x;
+    const squareY = this.y + squareSize / 2 - mouse.y;
+    for (let i = 1; i < 20; i++) {
+      const distance = i === 1 ? squareSize / 2 : squareSize * i;
+      if (
+        squareX < distance &&
+        squareX > -distance &&
+        squareY < distance &&
+        squareY > -distance
+      )
+        return 1 / (i * 10);
+    }
 
-    if (
+    /*  if (
       this.x + squareSize / 2 - mouse.x < squareSize &&
       this.x + squareSize / 2 - mouse.x > -squareSize &&
       this.y + squareSize / 2 - mouse.y < squareSize &&
       this.y + squareSize / 2 - mouse.y > -squareSize
     )
-      return 0.8;
+      return 0.25;
 
     if (
       this.x + squareSize / 2 - mouse.x < squareSize * 2 &&
@@ -61,7 +66,7 @@ class Square {
       this.y + squareSize / 2 - mouse.y < squareSize * 2 &&
       this.y + squareSize / 2 - mouse.y > -squareSize * 2
     )
-      return 0.6;
+      return 0.2;
 
     if (
       this.x + squareSize / 2 - mouse.x < squareSize * 4 &&
@@ -69,7 +74,7 @@ class Square {
       this.y + squareSize / 2 - mouse.y < squareSize * 4 &&
       this.y + squareSize / 2 - mouse.y > -squareSize * 4
     )
-      return 0.4;
+      return 0.15;
 
     if (
       this.x + squareSize / 2 - mouse.x < squareSize * 6 &&
@@ -77,7 +82,7 @@ class Square {
       this.y + squareSize / 2 - mouse.y < squareSize * 6 &&
       this.y + squareSize / 2 - mouse.y > -squareSize * 6
     )
-      return 0.2;
+      return 0.1;
 
     if (
       this.x + squareSize / 2 - mouse.x < squareSize * 8 &&
@@ -85,7 +90,7 @@ class Square {
       this.y + squareSize / 2 - mouse.y < squareSize * 8 &&
       this.y + squareSize / 2 - mouse.y > -squareSize * 8
     )
-      return 0.1;
+      return 0.07;
 
     if (
       this.x + squareSize / 2 - mouse.x < squareSize * 12 &&
@@ -109,16 +114,29 @@ class Square {
       this.y + squareSize / 2 - mouse.y < squareSize * 16 &&
       this.y + squareSize / 2 - mouse.y > -squareSize * 16
     )
-      return 0.01;
+      return 0.01; */
 
     return 0;
   }
 
   draw() {
     c.strokeStyle = `rgba(255, 255, 255, ${this.calculateOpacity()})`;
-    c.fillStyle = this.color;
-    c.fill();
+
     c.strokeRect(this.x, this.y, this.size, this.size);
+    const squareX = this.x + squareSize / 2 - mouse.x;
+    const squareY = this.y + squareSize / 2 - mouse.y;
+
+    const distance = squareSize / 2;
+    if (
+      squareX < distance &&
+      squareX > -distance &&
+      squareY < distance &&
+      squareY > -distance
+    ) {
+      c.fillStyle = `rgba(255, 255, 255, 0.02)`;
+
+      c.fillRect(this.x, this.y, this.size, this.size);
+    }
   }
 
   update() {
