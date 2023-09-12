@@ -1,0 +1,18 @@
+html {
+  width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background-color: #171717; /* Background color for the entire page */
+}
+
+canvas {
+  display: block;
+  background-color: transparent; /* Make the canvas background transparent */
+}
