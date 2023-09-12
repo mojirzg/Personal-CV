@@ -2,6 +2,7 @@
 
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
+let isDarkMode = localStorage.getItem("theme") === "DarkMode";
 const squareSize = 52;
 
 canvas.width = innerWidth;
@@ -17,7 +18,7 @@ const colors = ["#2185C5", "#7ECEFD", "#FFF6E5", "#FF7F66"];
 // Event Listeners
 addEventListener("mousemove", (event) => {
   mouse.x = event.clientX;
-  mouse.y = event.clientY;
+  mouse.y = event.clientY + window.scrollY;
 });
 
 addEventListener("resize", () => {
@@ -35,7 +36,6 @@ class Square {
     this.borderOpacity = 1;
     this.lineWidth = 1;
     this.size = squareSize;
-    this.color = "#fff";
   }
 
   calculateOpacity() {
@@ -51,76 +51,13 @@ class Square {
       )
         return 1 / (i * 10);
     }
-
-    /*  if (
-      this.x + squareSize / 2 - mouse.x < squareSize &&
-      this.x + squareSize / 2 - mouse.x > -squareSize &&
-      this.y + squareSize / 2 - mouse.y < squareSize &&
-      this.y + squareSize / 2 - mouse.y > -squareSize
-    )
-      return 0.25;
-
-    if (
-      this.x + squareSize / 2 - mouse.x < squareSize * 2 &&
-      this.x + squareSize / 2 - mouse.x > -squareSize * 2 &&
-      this.y + squareSize / 2 - mouse.y < squareSize * 2 &&
-      this.y + squareSize / 2 - mouse.y > -squareSize * 2
-    )
-      return 0.2;
-
-    if (
-      this.x + squareSize / 2 - mouse.x < squareSize * 4 &&
-      this.x + squareSize / 2 - mouse.x > -squareSize * 4 &&
-      this.y + squareSize / 2 - mouse.y < squareSize * 4 &&
-      this.y + squareSize / 2 - mouse.y > -squareSize * 4
-    )
-      return 0.15;
-
-    if (
-      this.x + squareSize / 2 - mouse.x < squareSize * 6 &&
-      this.x + squareSize / 2 - mouse.x > -squareSize * 6 &&
-      this.y + squareSize / 2 - mouse.y < squareSize * 6 &&
-      this.y + squareSize / 2 - mouse.y > -squareSize * 6
-    )
-      return 0.1;
-
-    if (
-      this.x + squareSize / 2 - mouse.x < squareSize * 8 &&
-      this.x + squareSize / 2 - mouse.x > -squareSize * 8 &&
-      this.y + squareSize / 2 - mouse.y < squareSize * 8 &&
-      this.y + squareSize / 2 - mouse.y > -squareSize * 8
-    )
-      return 0.07;
-
-    if (
-      this.x + squareSize / 2 - mouse.x < squareSize * 12 &&
-      this.x + squareSize / 2 - mouse.x > -squareSize * 12 &&
-      this.y + squareSize / 2 - mouse.y < squareSize * 12 &&
-      this.y + squareSize / 2 - mouse.y > -squareSize * 12
-    )
-      return 0.05;
-
-    if (
-      this.x + squareSize / 2 - mouse.x < squareSize * 14 &&
-      this.x + squareSize / 2 - mouse.x > -squareSize * 14 &&
-      this.y + squareSize / 2 - mouse.y < squareSize * 14 &&
-      this.y + squareSize / 2 - mouse.y > -squareSize * 14
-    )
-      return 0.02;
-
-    if (
-      this.x + squareSize / 2 - mouse.x < squareSize * 16 &&
-      this.x + squareSize / 2 - mouse.x > -squareSize * 16 &&
-      this.y + squareSize / 2 - mouse.y < squareSize * 16 &&
-      this.y + squareSize / 2 - mouse.y > -squareSize * 16
-    )
-      return 0.01; */
-
     return 0;
   }
 
   draw() {
-    c.strokeStyle = `rgba(255, 255, 255, ${this.calculateOpacity()})`;
+    c.strokeStyle = isDarkMode
+      ? `rgba(255, 255, 255, ${this.calculateOpacity()})`
+      : `rgba(0, 0, 0, ${this.calculateOpacity()})`;
 
     c.strokeRect(this.x, this.y, this.size, this.size);
     const squareX = this.x + squareSize / 2 - mouse.x;
@@ -133,7 +70,9 @@ class Square {
       squareY < distance &&
       squareY > -distance
     ) {
-      c.fillStyle = `rgba(255, 255, 255, 0.02)`;
+      c.fillStyle = isDarkMode
+        ? `rgba(255, 255, 255, 0.02)`
+        : `rgba(0, 0, 0, 0.02)`;
 
       c.fillRect(this.x, this.y, this.size, this.size);
     }
@@ -160,7 +99,7 @@ function init() {
 function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
-
+  isDarkMode = localStorage.getItem("theme") === "DarkMode";
   squares.forEach((item) => {
     item.update();
   });

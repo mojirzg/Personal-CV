@@ -1,0 +1,42 @@
+html {
+  width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background: var(
+    --surface-main,
+    #171717
+  ); /* Background color for the entire page */
+  position: relative;
+}
+
+canvas {
+  display: block;
+  background-color: transparent; /* Make the canvas background transparent */
+  position: absolute;
+  max-height: 100vh;
+}
+
+a {
+  text-decoration: inherit;
+}
+
+p {
+  color: var(--content-primary, #fff);
+  /* lable/16 Med */
+  font-family: "Satoshi Variable";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+@import "@/app/styles/colors";
+@import "@/app/styles/fonts";

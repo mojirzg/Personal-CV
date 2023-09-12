@@ -1,9 +1,12 @@
+"use client";
 import React from "react";
-import "./globals.scss";
+import "./styles/globals.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Head from "next/head";
 import Script from "next/script";
+import { useTheme } from "@/components";
+import { EnglishLanguage } from "@/lang";
+import { IntlProvider } from "react-intl";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,11 +20,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [theme] = useTheme();
+
   return (
-    <html lang="en">
+    <html lang="en" className={theme}>
       <Script src="/bg-animation.js" />
       <body>
         <canvas id="mosaicCanvas" />
+        <IntlProvider messages={EnglishLanguage} locale="en" defaultLocale="en">
+          {children}
+        </IntlProvider>
       </body>
     </html>
   );
