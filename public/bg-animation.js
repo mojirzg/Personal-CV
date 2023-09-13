@@ -49,7 +49,7 @@ class Square {
         squareY < distance &&
         squareY > -distance
       )
-        return 1 / (i * 10);
+        return isDarkMode ? 1 / (i * 6) : 1 / (i * 5);
     }
     return 0;
   }

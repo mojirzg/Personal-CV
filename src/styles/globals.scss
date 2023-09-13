@@ -22,6 +22,7 @@ canvas {
   background-color: transparent; /* Make the canvas background transparent */
   position: absolute;
   max-height: 100vh;
+  z-index: -1;
 }
 
 a {
@@ -38,5 +39,5 @@ p {
   line-height: 22px;
 }
 
-@import "@/app/styles/colors";
-@import "@/app/styles/fonts";
+@import "./colors";
+@import "./fonts";
