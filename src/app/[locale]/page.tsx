@@ -1,12 +1,12 @@
 import React from "react";
-import styles from "./page.module.scss";
 import { HomeInfo, NavMenu } from "@/components";
+// import styles from "./page.module.scss";
 
 export default function Home() {
   return (
     <>
       <HomeInfo />
-      {/* <NavMenu /> */}
+      <NavMenu />
     </>
   );
 }

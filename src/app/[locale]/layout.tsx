@@ -5,7 +5,6 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import { PageContainer } from "@/components";
 import { NextIntlClientProvider } from "next-intl";
-import { notFound } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,12 +23,13 @@ export const metadata: Metadata = {
 export function generateStaticParams() {
   return [{ locale: "en" }, { locale: "de" }];
 }
+
 export default async function RootLayout({ children, params }: Props) {
   let messages;
   try {
     messages = (await import(`@/messages/${params.locale}.json`)).default;
   } catch (error) {
-    notFound();
+    console.error(error);
   }
   return (
     <html lang={params.locale}>
@@ -38,7 +38,8 @@ export default async function RootLayout({ children, params }: Props) {
         <canvas id="mosaicCanvas" />
         <main>
           <NextIntlClientProvider locale={params.locale} messages={messages}>
-            <PageContainer>{children}</PageContainer>
+            {/* <PageContainer>{children}</PageContainer> */}
+            {children}
           </NextIntlClientProvider>
         </main>
       </body>

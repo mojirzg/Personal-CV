@@ -1,17 +1,45 @@
 "use client";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import Styles from "./NavMenu.module.scss";
 import { useTheme } from "@/components";
 import Image from "next/image";
-import { NAV_MENU } from "@/consts";
 import Link from "next/link";
+import { NAV_MENU } from "@/consts";
 import { useTranslations } from "next-intl";
 
 interface Props {}
 
 export const NavMenu: FunctionComponent<Props> = () => {
   const t = useTranslations();
-  const [theme, setTheme] = useTheme();
+
+  const [theme, setTheme] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!window) return;
+    initTheme();
+  }, []);
+
+  useEffect(() => {
+    if (theme) {
+      localStorage.setItem("theme", theme);
+      document.documentElement.className = "";
+      document.documentElement.classList.add(theme);
+    }
+  }, [theme]);
+
+  function initTheme() {
+    const theme = localStorage.getItem("theme") || "LightMode";
+    setTheme(theme);
+    document.documentElement.className = "";
+    document.documentElement.classList.add(theme);
+  }
+
+  function changeTheme() {
+    setTheme((theme) => (theme === "DarkMode" ? "LightMode" : "DarkMode"));
+  }
+
+  if (!theme) return null;
+
   return (
     <div className={Styles.base}>
       {NAV_MENU.map((item) => {
@@ -29,7 +57,7 @@ export const NavMenu: FunctionComponent<Props> = () => {
         height={24}
         alt="Theme Switch button"
         src={theme === "DarkMode" ? "/svg/moon.svg" : "/svg/sun.svg"}
-        onClick={setTheme}
+        onClick={changeTheme}
       />
     </div>
   );

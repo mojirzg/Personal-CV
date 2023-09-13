@@ -7,6 +7,7 @@ export const useTheme = () => {
   const [theme, setTheme] = useState<ThemeType | null>(null);
 
   useEffect(() => {
+    if (!window) return;
     initTheme();
   }, []);
 
