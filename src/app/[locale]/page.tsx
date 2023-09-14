@@ -1,12 +1,13 @@
 import React from "react";
 import { HomeInfo, NavMenu } from "@/components";
-// import styles from "./page.module.scss";
+import { Portfolio } from "@/components/portfolio";
 
 export default function Home() {
   return (
     <>
-      <HomeInfo />
       <NavMenu />
+      <HomeInfo />
+      <Portfolio />
     </>
   );
 }

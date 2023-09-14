@@ -14,10 +14,11 @@ module.exports = {
       "border-menu": "var(--border-menu)",
       "content-secondary": "var(--content-secondary)",
       "surface-main": "var(--surface-main)",
+      transparent: "rgb(0,0,0,0)",
     },
     extend: {
       fontFamily: {
-        DEFAULT: ["var(--font-satoshi)"],
+        satoshi: ["var(--font-satoshi)"],
       },
       keyframes: {
         opacityChanger: {

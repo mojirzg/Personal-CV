@@ -1,7 +1,5 @@
 "use client";
 import React, { FunctionComponent, useEffect, useState } from "react";
-import Styles from "./NavMenu.module.scss";
-import { useTheme } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import { NAV_MENU } from "@/consts";
@@ -42,18 +40,26 @@ export const NavMenu: FunctionComponent<Props> = () => {
   }
 
   return (
-    <div className={Styles.base}>
+    <div
+      className={
+        "md:w-fit fixed md:mx-auto left-0 right-0 bottom-4 md:bottom-16 rounded-lg border-4 border-solid border-border-menu bg-background-menu backdrop-blur-md gap-6 py-3 px-[16px] z-50 flex"
+      }
+    >
       {NAV_MENU.map((item) => {
         return (
           <Link key={item.name} href={item.link}>
-            <div className={Styles.navItem}>
-              <p>{t(item.name as keyof Messages)}</p>
+            <div className={"no-underline gap-1.5 pt-1.5 pb-0 px-2"}>
+              <p className="transition-all duration-[0.3s] ease-[ease] m-0 px-0 py-1 hover:border-b border-solid hover:border-b-content-primary border-b border-b-transparent">
+                {t(item.name as keyof Messages)}
+              </p>
             </div>
           </Link>
         );
       })}
       <Image
-        className={Styles.themeButton}
+        className={
+          "cursor-pointer transition-transform duration-[0.1s] ease-[ease] hover:transition-transform hover:duration-[0.1s] hover:ease-[ease] hover:scale-110"
+        }
         width={24}
         height={24}
         alt="Theme Switch button"

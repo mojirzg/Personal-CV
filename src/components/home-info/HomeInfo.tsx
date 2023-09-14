@@ -48,19 +48,24 @@ export const HomeInfo: FunctionComponent<Props> = () => {
   }
 
   return (
-    <div className={"flex items-center flex-col gap-8 pt-[83px]"}>
+    <div
+      className={
+        "flex justify-center md:justify-start h-screen items-center flex-col gap-8 md:pt-[83px]"
+      }
+    >
       <p
         className={
-          "text-content-secondary text-8xl font-medium opacity-0 animate-[typing_3.5s_steps(40,end)_forwards] float-left z-[999999] w-fit overflow-hidden whitespace-nowrap tracking-[0.15em] mx-auto m-0"
+          "text-content-secondary text-5xl md:text-8xl font-medium opacity-0 animate-[typing_3.5s_steps(40,end)_forwards] float-left z-[999999] w-fit overflow-hidden whitespace-nowrap  mx-auto m-0"
         }
       >
         {t("homeGreetings")}
         <span
           id="name"
           className={
-            "group text-content-primary text-8xl not-italic leading-[normal] font-bold"
+            "group text-content-primary text-5xl md:text-8xl not-italic leading-[normal] font-bold"
           }
         >
+          {" "}
           {t("NAME")}
           <Image
             className={"hidden group-hover:flex absolute"}
@@ -74,24 +79,26 @@ export const HomeInfo: FunctionComponent<Props> = () => {
       </p>
       <p
         className={
-          "animation-delay-2 w-fit overflow-hidden whitespace-nowrap tracking-[0.15em] mx-auto m-0 text-content-secondary text-center text-6xl not-italic leading-[normal] font-medium animate-[typing_3.5s_steps(40,end)_forwards] opacity-0"
+          "animation-delay-2 w-fit overflow-hidden whitespace-nowrap mx-auto m-0 text-content-secondary text-center text-2xl md:text-6xl not-italic leading-[normal] font-medium animate-[typing_3.5s_steps(40,end)_forwards] opacity-0"
         }
       >
         {t("expertice")}
       </p>
       <div
-        className={"flex items-center gap-4 relative ml-[-190px] justify-start"}
+        className={
+          "flex flex-col md:flex-row md:flex-row items-center gap-4 md:relative md:ml-[-190px] justify-start"
+        }
       >
         <p
           className={
-            "animation-delay-3_5  animation-duration-1_5  w-fit overflow-hidden whitespace-nowrap tracking-[0.15em] mx-auto m-0 text-content-secondary text-[52px] not-italic leading-[normal] opacity-0 font-medium animate-[typing_3.5s_steps(40,end)_forwards]"
+            "animation-delay-3_5 me-5 animation-duration-1_5  w-fit overflow-hidden whitespace-nowrap  md:mx-auto m-0 text-content-secondary text-2xl md:text-[52px] not-italic leading-[normal] opacity-0 font-medium animate-[typing_3.5s_steps(20,end)_forwards]"
           }
         >
           {t("iHaveExperienceIn")}
         </p>
         <div
           className={
-            "animation-delay-5_5 text-content-secondary text-[32px] not-italic font-medium leading-[normal] rounded whitespace-nowrap overflow-hidden opacity-0 animate-[opacityChanger_0.3s_forwards] absolute p-1 left-full bg-background-subtle"
+            "animation-delay-5_5 text-content-secondary not-italic font-medium leading-[normal] rounded whitespace-nowrap overflow-hidden opacity-0 animate-[opacityChanger_0.3s_forwards] md:absolute p-1 left-full md:ms-4 bg-background-subtle"
           }
         >
           <div
@@ -101,7 +108,7 @@ export const HomeInfo: FunctionComponent<Props> = () => {
           >
             <p
               className={
-                "w-fit overflow-hidden whitespace-nowrap tracking-[0.15em] mx-auto m-0 float-left text-content-primary text-center text-[52px] not-italic font-medium leading-[normal]"
+                "w-fit overflow-hidden whitespace-nowrap tracking-[0.15em] mx-auto m-0 float-left text-content-primary text-center text-xl  text-[24spx] md:text-[52px] not-italic font-medium leading-[normal]"
               }
             >
               {TEXTS[currentTextIndex]}

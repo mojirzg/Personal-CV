@@ -47,6 +47,11 @@
     --content-primary: var(--color-white-alpha-950);
     --content-secondary: var(--color-white-alpha-500);
     --surface-main: var(--color-neutral-950);
+    --portfolio-gradient: linear-gradient(
+      270deg,
+      #585858 0%,
+      rgba(88, 88, 88, 0) 80%
+    );
   }
   :root[class~="light"] {
     --background-card: var(--color-neutral-alpha-50);
@@ -58,5 +63,11 @@
     --content-primary: var(--color-neutral-alpha-950);
     --content-secondary: var(--color-neutral-alpha-500);
     --surface-main: var(--color-neutral-50);
+    --portfolio-gradient: linear-gradient(
+      270deg,
+      #585858 -53.18%,
+      rgba(88, 88, 88, 0.36) 23.41%,
+      rgba(88, 88, 88, 0) 100%
+    );
   }
 }

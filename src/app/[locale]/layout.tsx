@@ -36,7 +36,11 @@ export default async function RootLayout({ children, params }: Props) {
     console.error(error);
   }
   return (
-    <html dir="ltr" lang={params.locale} className={SatoshiFont.variable}>
+    <html
+      dir="ltr"
+      lang={params.locale}
+      className={`${SatoshiFont.variable} font-satoshi dark snap-y`}
+    >
       <Script src="/bg-animation.js" />
       <body>
         <canvas id="mosaicCanvas" />
