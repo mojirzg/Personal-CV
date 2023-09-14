@@ -2,7 +2,7 @@
 
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
-let isDarkMode = localStorage.getItem("theme") === "DarkMode";
+let isDarkMode = localStorage.getItem("theme") === "dark";
 const squareSize = 52;
 
 canvas.width = innerWidth;
@@ -12,8 +12,6 @@ const mouse = {
   x: innerWidth / 2,
   y: innerHeight / 2,
 };
-
-const colors = ["#2185C5", "#7ECEFD", "#FFF6E5", "#FF7F66"];
 
 // Event Listeners
 addEventListener("mousemove", (event) => {
@@ -99,7 +97,7 @@ function init() {
 function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
-  isDarkMode = localStorage.getItem("theme") === "DarkMode";
+  isDarkMode = localStorage.getItem("theme") === "dark";
   squares.forEach((item) => {
     item.update();
   });

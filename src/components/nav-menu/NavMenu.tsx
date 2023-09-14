@@ -11,8 +11,7 @@ interface Props {}
 
 export const NavMenu: FunctionComponent<Props> = () => {
   const t = useTranslations();
-
-  const [theme, setTheme] = useState<string | null>(null);
+  const [theme, setTheme] = useState<string>();
 
   useEffect(() => {
     if (!window) return;
@@ -22,23 +21,25 @@ export const NavMenu: FunctionComponent<Props> = () => {
   useEffect(() => {
     if (theme) {
       localStorage.setItem("theme", theme);
-      document.documentElement.className = "";
+      document.documentElement.classList.remove(
+        theme === "dark" ? "light" : "dark"
+      );
       document.documentElement.classList.add(theme);
     }
   }, [theme]);
 
   function initTheme() {
-    const theme = localStorage.getItem("theme") || "LightMode";
+    const theme = localStorage.getItem("theme") || "light";
     setTheme(theme);
-    document.documentElement.className = "";
+    document.documentElement.classList.remove(
+      theme === "dark" ? "dark" : "light"
+    );
     document.documentElement.classList.add(theme);
   }
 
   function changeTheme() {
-    setTheme((theme) => (theme === "DarkMode" ? "LightMode" : "DarkMode"));
+    setTheme((theme) => (theme === "dark" ? "light" : "dark"));
   }
-
-  if (!theme) return null;
 
   return (
     <div className={Styles.base}>
@@ -56,7 +57,7 @@ export const NavMenu: FunctionComponent<Props> = () => {
         width={24}
         height={24}
         alt="Theme Switch button"
-        src={theme === "DarkMode" ? "/svg/moon.svg" : "/svg/sun.svg"}
+        src={theme === "dark" ? "/svg/moon.svg" : "/svg/sun.svg"}
         onClick={changeTheme}
       />
     </div>

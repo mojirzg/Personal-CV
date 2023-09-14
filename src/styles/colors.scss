@@ -1,62 +1,62 @@
-html {
-  /* colors */
-  --color-neutral-100: #e7e7e7;
-  --color-neutral-200: #d1d1d1;
-  --color-neutral-300: #b0b0b0;
-  --color-neutral-400: #888888;
-  --color-neutral-50: #f6f6f6;
-  --color-neutral-500: #6d6d6d;
-  --color-neutral-600: #5d5d5d;
-  --color-neutral-700: #4f4f4f;
-  --color-neutral-800: #454545;
-  --color-neutral-900: #3d3d3d;
-  --color-neutral-950: #171717;
-  --color-neutral-alpha-100: #1717171a;
-  --color-neutral-alpha-200: #17171733;
-  --color-neutral-alpha-300: #1717174d;
-  --color-neutral-alpha-400: #17171766;
-  --color-neutral-alpha-50: #1717170d;
-  --color-neutral-alpha-500: #17171780;
-  --color-neutral-alpha-600: #17171799;
-  --color-neutral-alpha-700: #171717b2;
-  --color-neutral-alpha-800: #171717cc;
-  --color-neutral-alpha-900: #171717e5;
-  --color-neutral-alpha-950: #171717;
-  --color-white-alpha-100: #ffffff1a;
-  --color-white-alpha-200: #ffffff33;
-  --color-white-alpha-300: #ffffff4d;
-  --color-white-alpha-400: #ffffff66;
-  --color-white-alpha-50: #ffffff0d;
-  --color-white-alpha-500: #ffffff80;
-  --color-white-alpha-600: #ffffff99;
-  --color-white-alpha-700: #ffffffb2;
-  --color-white-alpha-800: #ffffffcc;
-  --color-white-alpha-900: #ffffffe5;
-  --color-white-alpha-950: #ffffff;
-}
+@layer base {
+  :root {
+    --color-neutral-100: rgb(231, 231, 231);
+    --color-neutral-200: rgb(209, 209, 209);
+    --color-neutral-300: rgb(176, 176, 176);
+    --color-neutral-400: rgb(136, 136, 136);
+    --color-neutral-50: rgb(246, 246, 246);
+    --color-neutral-500: rgb(109, 109, 109);
+    --color-neutral-600: rgb(93, 93, 93);
+    --color-neutral-700: rgb(79, 79, 79);
+    --color-neutral-800: rgb(69, 69, 69);
+    --color-neutral-900: rgb(61, 61, 61);
+    --color-neutral-950: rgb(23, 23, 23);
+    --color-neutral-alpha-100: rgba(23, 23, 23, 0.102);
+    --color-neutral-alpha-200: rgba(23, 23, 23, 0.2);
+    --color-neutral-alpha-300: rgba(23, 23, 23, 0.302);
+    --color-neutral-alpha-400: rgba(23, 23, 23, 0.4);
+    --color-neutral-alpha-50: rgba(23, 23, 23, 0.051);
+    --color-neutral-alpha-500: rgba(23, 23, 23, 0.502);
+    --color-neutral-alpha-600: rgba(23, 23, 23, 0.6);
+    --color-neutral-alpha-700: rgba(23, 23, 23, 0.698);
+    --color-neutral-alpha-800: rgba(23, 23, 23, 0.8);
+    --color-neutral-alpha-900: rgba(23, 23, 23, 0.898);
+    --color-neutral-alpha-950: rgb(23, 23, 23);
+    --color-white-alpha-100: rgba(255, 255, 255, 0.102);
+    --color-white-alpha-200: rgba(255, 255, 255, 0.2);
+    --color-white-alpha-300: rgba(255, 255, 255, 0.302);
+    --color-white-alpha-400: rgba(255, 255, 255, 0.4);
+    --color-white-alpha-50: rgba(255, 255, 255, 0.051);
+    --color-white-alpha-500: rgba(255, 255, 255, 0.502);
+    --color-white-alpha-600: rgba(255, 255, 255, 0.6);
+    --color-white-alpha-700: rgba(255, 255, 255, 0.698);
+    --color-white-alpha-800: rgba(255, 255, 255, 0.8);
+    --color-white-alpha-900: rgba(255, 255, 255, 0.898);
+    --color-white-alpha-950: rgb(255, 255, 255);
 
-html[class*="DarkMode"] {
-  /* colors */
-  --background-card: var(--color-white-alpha-50);
-  --background-input: var(--color-neutral-900);
-  --background-menu: var(--color-white-alpha-50);
-  --background-subtle: var(--color-white-alpha-100);
-  --border-button: var(--color-white-alpha-700);
-  --border-menu: var(--color-white-alpha-100);
-  --content-primary: var(--color-white-alpha-950);
-  --content-secondary: var(--color-white-alpha-500);
-  --surface-main: var(--color-neutral-950);
-}
+    --c-neutral-alpha-500: 23 23 23;
+  }
 
-html[class*="LightMode"] {
-  /* colors */
-  --background-card: var(--color-neutral-alpha-50);
-  --background-input: var(--color-neutral-100);
-  --background-menu: var(--color-neutral-alpha-50);
-  --background-subtle: var(--color-neutral-alpha-100);
-  --border-button: var(--color-neutral-alpha-700);
-  --border-menu: var(--color-neutral-alpha-100);
-  --content-primary: var(--color-neutral-alpha-950);
-  --content-secondary: var(--color-neutral-alpha-500);
-  --surface-main: var(--color-neutral-50);
+  :root[class~="dark"] {
+    --background-card: var(--color-white-alpha-50);
+    --background-input: var(--color-neutral-900);
+    --background-menu: var(--color-white-alpha-50);
+    --background-subtle: var(--color-white-alpha-100);
+    --border-button: var(--color-white-alpha-700);
+    --border-menu: var(--color-white-alpha-100);
+    --content-primary: var(--color-white-alpha-950);
+    --content-secondary: var(--color-white-alpha-500);
+    --surface-main: var(--color-neutral-950);
+  }
+  :root[class~="light"] {
+    --background-card: var(--color-neutral-alpha-50);
+    --background-input: var(--color-neutral-100);
+    --background-menu: var(--color-neutral-alpha-50);
+    --background-subtle: var(--color-neutral-alpha-100);
+    --border-button: var(--color-neutral-alpha-700);
+    --border-menu: var(--color-neutral-alpha-100);
+    --content-primary: var(--color-neutral-alpha-950);
+    --content-secondary: var(--color-neutral-alpha-500);
+    --surface-main: var(--color-neutral-50);
+  }
 }

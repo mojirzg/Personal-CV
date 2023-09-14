@@ -41,3 +41,20 @@ p {
 
 @import "./colors";
 @import "./fonts";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.animation-delay-2 {
+  animation-delay: 2s;
+}
+.animation-delay-3_5 {
+  animation-delay: 3.5s;
+}
+.animation-delay-5_5 {
+  animation-delay: 5.5s;
+}
+.animation-duration-1_5 {
+  animation-duration: 1.5s;
+}

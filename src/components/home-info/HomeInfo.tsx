@@ -1,6 +1,5 @@
 "use client";
 import React, { FunctionComponent, useEffect, useRef, useState } from "react";
-import Styles from "./HomeInfo.module.scss";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -47,26 +46,24 @@ export const HomeInfo: FunctionComponent<Props> = () => {
       imageRef.current.style.top = e.y + 10 + "px";
     }
   }
-  function handleShowImage() {
-    // setShowImage(true);
-  }
-
-  function handleHideImage() {
-    // setShowImage(false);
-  }
 
   return (
-    <div className={Styles.base}>
+    <div className={"flex items-center flex-col gap-8 pt-[83px]"}>
       <p
-        className={Styles.greetings}
-        onMouseEnter={handleShowImage}
-        onMouseLeave={handleHideImage}
+        className={
+          "text-content-secondary text-8xl font-medium opacity-0 animate-[typing_3.5s_steps(40,end)_forwards] float-left z-[999999] w-fit overflow-hidden whitespace-nowrap tracking-[0.15em] mx-auto m-0"
+        }
       >
         {t("homeGreetings")}
-        <span id="name" className={Styles.myName}>
+        <span
+          id="name"
+          className={
+            "group text-content-primary text-8xl not-italic leading-[normal] font-bold"
+          }
+        >
           {t("NAME")}
           <Image
-            className={Styles.myImage}
+            className={"hidden group-hover:flex absolute"}
             ref={imageRef}
             src={"/images/me.jpg"}
             alt={t("NAME")}
@@ -75,12 +72,40 @@ export const HomeInfo: FunctionComponent<Props> = () => {
           />
         </span>
       </p>
-      <p className={Styles.expertice}>{t("expertice")}</p>
-      <div className={Styles.experienceContainer}>
-        <p className={Styles.experience}>{t("iHaveExperienceIn")}</p>
-        <div className={Styles.frameworksContainer}>
-          <div className={Styles.frameworks}>
-            <p className={Styles.typing}>{TEXTS[currentTextIndex]}</p>
+      <p
+        className={
+          "animation-delay-2 w-fit overflow-hidden whitespace-nowrap tracking-[0.15em] mx-auto m-0 text-content-secondary text-center text-6xl not-italic leading-[normal] font-medium animate-[typing_3.5s_steps(40,end)_forwards] opacity-0"
+        }
+      >
+        {t("expertice")}
+      </p>
+      <div
+        className={"flex items-center gap-4 relative ml-[-190px] justify-start"}
+      >
+        <p
+          className={
+            "animation-delay-3_5  animation-duration-1_5  w-fit overflow-hidden whitespace-nowrap tracking-[0.15em] mx-auto m-0 text-content-secondary text-[52px] not-italic leading-[normal] opacity-0 font-medium animate-[typing_3.5s_steps(40,end)_forwards]"
+          }
+        >
+          {t("iHaveExperienceIn")}
+        </p>
+        <div
+          className={
+            "animation-delay-5_5 text-content-secondary text-[32px] not-italic font-medium leading-[normal] rounded whitespace-nowrap overflow-hidden opacity-0 animate-[opacityChanger_0.3s_forwards] absolute p-1 left-full bg-background-subtle"
+          }
+        >
+          <div
+            className={
+              "overflow-hidden whitespace-nowrap animate-[typingFrameworks_3s_steps(10,end)_infinite,blink-caret_0.75s_step-end_infinite_backwards] border-r-2 border-solid"
+            }
+          >
+            <p
+              className={
+                "w-fit overflow-hidden whitespace-nowrap tracking-[0.15em] mx-auto m-0 float-left text-content-primary text-center text-[52px] not-italic font-medium leading-[normal]"
+              }
+            >
+              {TEXTS[currentTextIndex]}
+            </p>
           </div>
         </div>
       </div>

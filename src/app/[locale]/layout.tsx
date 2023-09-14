@@ -1,12 +1,16 @@
 import React from "react";
 import "@/styles/globals.scss";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Script from "next/script";
 import { PageContainer } from "@/components";
 import { NextIntlClientProvider } from "next-intl";
+import localFont from "next/font/local";
 
-const inter = Inter({ subsets: ["latin"] });
+const SatoshiFont = localFont({
+  src: "../../../public/font/Satoshi-Variable.ttf",
+  variable: "--font-satoshi",
+  display: "swap",
+});
 
 interface Props {
   children: React.ReactNode;
@@ -32,7 +36,7 @@ export default async function RootLayout({ children, params }: Props) {
     console.error(error);
   }
   return (
-    <html lang={params.locale}>
+    <html dir="ltr" lang={params.locale} className={SatoshiFont.variable}>
       <Script src="/bg-animation.js" />
       <body>
         <canvas id="mosaicCanvas" />
