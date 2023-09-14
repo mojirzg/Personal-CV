@@ -75,7 +75,7 @@ p {
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
 
-  @media screen {
+  @media (max-width: 960px) {
     font-size: 60px;
   }
 }
