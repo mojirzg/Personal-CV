@@ -1,5 +1,3 @@
-// import utils from "./utils";
-
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 let isDarkMode = localStorage.getItem("theme") === "dark";
@@ -8,6 +6,14 @@ const squareSize = 52;
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
+const animatePosition = {
+  step: 1,
+  x: getRandomInt(0, innerWidth),
+  y: getRandomInt(0, innerHeight),
+};
+
+console.log({ animatePosition });
+
 const mouse = {
   x: innerWidth / 2,
   y: innerHeight / 2,
@@ -15,6 +21,13 @@ const mouse = {
 
 // Event Listeners
 addEventListener("mousemove", (event) => {
+  mouse.x = event.clientX;
+  mouse.y = event.clientY + window.scrollY;
+});
+
+addEventListener("touchmove", (e) => {
+  const event = e?.changedTouches?.[0];
+  if (!event) return;
   mouse.x = event.clientX;
   mouse.y = event.clientY + window.scrollY;
 });
@@ -98,6 +111,31 @@ function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
   isDarkMode = localStorage.getItem("theme") === "dark";
+
+  /*   if (animatePosition.x === mouse.x && animatePosition.y === mouse.y) {
+    mouse.x = animatePosition.x;
+    mouse.y = animatePosition.y;
+    animatePosition.x = getRandomInt(0, innerWidth);
+    animatePosition.y = getRandomInt(0, innerHeight);
+  }
+
+  if (animatePosition.x !== mouse.x) {
+    if (animatePosition.x > mouse.x) {
+      mouse.x = mouse.x + animatePosition.step;
+      return;
+    }
+    mouse.x = mouse.x - animatePosition.step;
+  }
+
+  if (animatePosition.y !== mouse.y) {
+    if (animatePosition.y > mouse.y) {
+      mouse.y = mouse.y + animatePosition.step;
+      return;
+    }
+    mouse.y = mouse.y - animatePosition.step;
+  }
+ */
+
   squares.forEach((item) => {
     item.update();
   });
@@ -105,6 +143,12 @@ function animate() {
 
 init();
 animate();
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 /* const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");

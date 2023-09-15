@@ -51,7 +51,7 @@ export const Portfolio: FunctionComponent<Props> = () => {
                 className="relative flex-1 w-full aspect-[2/1] bg-background-card"
                 key={index}
               >
-                <Image fill src={item.image} objectFit="cover" alt="" />
+                <Image fill src={item.image} className="object-cover" alt="" />
               </div>
               <p className="px-4 pt-2 text-lg font-bold">{item.name}</p>
               <p className="px-4 py-0 pb-4 text-lg font-bold text-content-secondary">

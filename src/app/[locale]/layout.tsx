@@ -1,10 +1,10 @@
 import React from "react";
 import "@/styles/globals.scss";
-import type { Metadata } from "next";
 import Script from "next/script";
 import { PageContainer } from "@/components";
 import { NextIntlClientProvider } from "next-intl";
 import localFont from "next/font/local";
+import type { Metadata } from "next";
 
 const SatoshiFont = localFont({
   src: "../../../public/font/Satoshi-Variable.ttf",

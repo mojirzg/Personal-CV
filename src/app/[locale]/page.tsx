@@ -1,6 +1,6 @@
 import React from "react";
-import { HomeInfo, NavMenu } from "@/components";
-import { Portfolio } from "@/components/portfolio";
+import { HomeInfo, NavMenu, Portfolio } from "@/components";
+import Contact from "@/components/ui/contact/Contact";
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
       <NavMenu />
       <HomeInfo />
       <Portfolio />
+      <Contact />
     </>
   );
 }
