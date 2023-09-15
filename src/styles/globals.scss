@@ -1,0 +1,81 @@
+html {
+  width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background: var(
+    --surface-main,
+    #171717
+  ); /* Background color for the entire page */
+  position: relative;
+}
+
+canvas {
+  display: block;
+  background-color: transparent; /* Make the canvas background transparent */
+  position: absolute;
+  max-height: 100vh;
+  z-index: -1;
+}
+
+a {
+  text-decoration: inherit;
+}
+
+p {
+  color: var(--content-primary, #fff);
+  /* lable/16 Med */
+  font-family: "Satoshi Variable";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+@import "./colors";
+@import "./fonts";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.animation-delay-2 {
+  animation-delay: 2s;
+}
+.animation-delay-3_5 {
+  animation-delay: 3.5s;
+}
+.animation-delay-5_5 {
+  animation-delay: 5.5s;
+}
+.animation-duration-1_5 {
+  animation-duration: 1.5s;
+}
+
+.portfolio-text {
+  font-size: 152px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  text-orientation: sideways;
+  display: inline-block;
+  color: #fff; /* fallback */
+  background: var(--portfolio-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+
+  @media (max-width: 960px) {
+    font-size: 60px;
+  }
+}
