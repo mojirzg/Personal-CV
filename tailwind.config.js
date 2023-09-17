@@ -14,6 +14,7 @@ module.exports = {
       "border-menu": "var(--border-menu)",
       "content-secondary": "var(--content-secondary)",
       "surface-main": "var(--surface-main)",
+      "background-frameWork": "var(--background-frameWork)",
       transparent: "rgb(0,0,0,0)",
     },
     extend: {

@@ -79,3 +79,19 @@ p {
     font-size: 60px;
   }
 }
+
+.frameworkText {
+  position: relative;
+  border-right: 2px solid;
+  animation: blinkCaret 0.75s infinite;
+}
+
+@keyframes blinkCaret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--content-primary, #fff);
+  }
+}

@@ -1,11 +1,17 @@
 "use client";
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 interface Props {}
 
-const TEXTS = [
+const wordsList = [
   "Next.js",
   "React.js",
   "TypeScript",
@@ -14,21 +20,61 @@ const TEXTS = [
   "CSS",
 ];
 
+const typingDelay = 150;
+const changeWordDelay = 1000;
+
 export const HomeInfo: FunctionComponent<Props> = () => {
   const t = useTranslations();
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const textRef = useRef<HTMLSpanElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const [currentWord, setCurrentWord] = useState<{
+    index: number;
+    word: string;
+  }>({ index: 0, word: "" });
+
+  const eraseWord = useCallback(() => {
+    const timeout = setTimeout(() => {
+      setCurrentWord((w) => {
+        const length = w?.word?.length || 0;
+        const newWord = w?.word?.slice(0, length - 1);
+        console.log("eraseWord", { w, newWord, length });
+        if (!length) {
+          clearTimeout(timeout);
+          return { ...w, index: (w.index + 1) % wordsList.length };
+        }
+        eraseWord();
+        return { ...w, word: newWord };
+      });
+    }, typingDelay);
+  }, []);
+
+  const changeWord = useCallback(() => {
+    const timeout = setTimeout(() => {
+      setCurrentWord((w) => {
+        const word = wordsList[w.index];
+        if (w.word === word) return w;
+        const length = w?.word.length || 0;
+        const newWord = w.word + word.slice(length, length + 1);
+        if (newWord.length === word.length) {
+          clearTimeout(timeout);
+          setTimeout(() => {
+            eraseWord();
+          }, changeWordDelay);
+          return { ...w, word: newWord };
+        }
+        changeWord();
+        return { ...w, word: newWord };
+      });
+    }, typingDelay); // Adjust the delay between words if needed
+  }, [eraseWord]);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-    setTimeout(() => {
-      interval = setInterval(() => {
-        setCurrentTextIndex((prevIndex) => (prevIndex + 1) % TEXTS?.length);
-      }, 3000);
-    }, 5500);
+    const timeout = setTimeout(() => {
+      changeWord();
+    }, changeWordDelay);
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearTimeout(timeout);
+  }, [changeWord, currentWord.index]);
 
   useEffect(() => {
     document.addEventListener("pointermove", followMouse);
@@ -98,20 +144,16 @@ export const HomeInfo: FunctionComponent<Props> = () => {
         </p>
         <div
           className={
-            "animation-delay-5_5 text-content-secondary not-italic font-medium leading-[normal] rounded whitespace-nowrap overflow-hidden opacity-0 animate-[opacityChanger_0.3s_forwards] md:absolute p-1 left-full md:ms-4 bg-background-subtle"
+            "animation-delay-5_5 text-content-secondary min-w-[50px] min-h-[34px] not-italic font-medium leading-[normal] rounded whitespace-nowrap overflow-hidden opacity-0 animate-[opacityChanger_0.3s_forwards] md:absolute p-1 left-full md:ms-4 bg-background-subtle"
           }
         >
-          <div
-            className={
-              "overflow-hidden whitespace-nowrap animate-[typingFrameworks_3s_steps(10,end)_infinite,blink-caret_0.75s_step-end_infinite_backwards] border-r-2 border-solid"
-            }
-          >
+          <div className={"overflow-hidden whitespace-nowrap "}>
             <p
               className={
-                "w-fit overflow-hidden whitespace-nowrap tracking-[0.15em] mx-auto m-0 float-left text-content-primary text-center text-xl  text-[24spx] md:text-[52px] not-italic font-medium leading-[normal]"
+                "frameworkText w-fit h-[25px] md:h-[72px] overflow-hidden whitespace-nowrap tracking-[0.15em] mx-auto m-0 float-left text-content-primary text-center text-xl  text-[24px] md:text-[52px] not-italic font-medium leading-[normal]"
               }
             >
-              {TEXTS[currentTextIndex]}
+              <span ref={textRef}>{currentWord.word}</span>
             </p>
           </div>
         </div>

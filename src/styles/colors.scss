@@ -33,8 +33,6 @@
     --color-white-alpha-800: rgba(255, 255, 255, 0.8);
     --color-white-alpha-900: rgba(255, 255, 255, 0.898);
     --color-white-alpha-950: rgb(255, 255, 255);
-
-    --c-neutral-alpha-500: 23 23 23;
   }
 
   :root[class~="dark"] {
@@ -42,6 +40,7 @@
     --background-input: var(--color-neutral-900);
     --background-menu: var(--color-white-alpha-50);
     --background-subtle: var(--color-white-alpha-100);
+    --background-frameWork: #333333;
     --border-button: var(--color-white-alpha-700);
     --border-menu: var(--color-white-alpha-100);
     --content-primary: var(--color-white-alpha-950);
@@ -58,6 +57,7 @@
     --background-input: var(--color-neutral-100);
     --background-menu: var(--color-neutral-alpha-50);
     --background-subtle: var(--color-neutral-alpha-100);
+    --background-frameWork: #dadada;
     --border-button: var(--color-neutral-alpha-700);
     --border-menu: var(--color-neutral-alpha-100);
     --content-primary: var(--color-neutral-alpha-950);
