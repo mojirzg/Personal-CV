@@ -9,6 +9,7 @@ export default function Home() {
       <HomeInfo />
       <Portfolio />
       <Contact />
+      <div className="py-10" />
     </>
   );
 }

@@ -51,6 +51,12 @@
       #585858 0%,
       rgba(88, 88, 88, 0) 80%
     );
+    --line-gradient: linear-gradient(
+      rgba(255, 255, 255, 0) -0.76%,
+      rgba(255, 255, 255, 0.4) 47.35%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    --line-drop: rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%;
   }
   :root[class~="light"] {
     --background-card: var(--color-neutral-alpha-50);
@@ -69,5 +75,30 @@
       rgba(88, 88, 88, 0.36) 23.41%,
       rgba(88, 88, 88, 0) 100%
     );
+    --line-gradient: linear-gradient(
+      rgba(23, 23, 23, 0) -0.76%,
+      rgba(23, 23, 23, 0.4) 47.35%,
+      rgba(23, 23, 23, 0) 100%
+    );
+    --line-drop: rgba(0, 0, 0, 0) 0%, #000 75%, #000 100%;
+  }
+
+  @media (max-width: 960px) {
+    :root[class~="dark"] {
+      --line-gradient: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) -0.76%,
+        rgba(255, 255, 255, 0.4) 47.35%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+    :root[class~="light"] {
+      --line-gradient: linear-gradient(
+        90deg,
+        rgba(23, 23, 23, 0) -0.76%,
+        rgba(23, 23, 23, 0.4) 47.35%,
+        rgba(23, 23, 23, 0) 100%
+      );
+    }
   }
 }

@@ -15,6 +15,7 @@ module.exports = {
       "content-secondary": "var(--content-secondary)",
       "surface-main": "var(--surface-main)",
       "background-frameWork": "var(--background-frameWork)",
+      "line-gradient": "var(--line-gradient)",
       transparent: "rgb(0,0,0,0)",
     },
     extend: {

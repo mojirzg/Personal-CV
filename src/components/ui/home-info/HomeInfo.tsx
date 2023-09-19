@@ -37,7 +37,6 @@ export const HomeInfo: FunctionComponent<Props> = () => {
       setCurrentWord((w) => {
         const length = w?.word?.length || 0;
         const newWord = w?.word?.slice(0, length - 1);
-        console.log("eraseWord", { w, newWord, length });
         if (!length) {
           clearTimeout(timeout);
           return { ...w, index: (w.index + 1) % wordsList.length };
