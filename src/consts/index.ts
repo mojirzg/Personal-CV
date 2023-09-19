@@ -8,6 +8,7 @@ export const CONTACT_INFO = {
   phone: "+98 937 911 88 54",
   email: "moji.razaghi@gmail.com",
   telegram: "https://t.me/Moji_RZG",
+  whatsapp: "https://wa.me/+989379118854",
   linkedIn: "www.linkedin.com/in/mojirzg",
   github: "https://github.com/mojirzg",
   gitlab: "https://gitlab.com/mojirzg",

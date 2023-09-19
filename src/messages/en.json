@@ -12,12 +12,16 @@
   "yourEmail": "Your Email",
   "yourMessage": "Your Message",
   "send": "Send",
+  "sent": "Sent",
+  "sending": "Sending",
   "contactInfo": "Contact Info",
+  "contactDescription": "If you'd like to talk about a project, you want help with or need an advice about web development, just drop me a message.  I'm currently Available for any development task or project.",
   "socials": "Socials",
   "linkedIn": "Linked In",
   "github": "Github",
   "gitlab": "Gitlab",
   "instagram": "Instagram",
+  "error": "error",
   "a": "",
   "b": ""
 }

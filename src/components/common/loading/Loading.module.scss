@@ -1,0 +1,59 @@
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  span {
+    width: 30px;
+    height: 1px;
+    right: 0;
+    background: var(--color-neutral-300);
+    position: absolute;
+  }
+
+  & > span:nth-child(1) {
+    top: 10%;
+    animation: mooving 500ms infinite;
+  }
+  & > span:nth-child(2) {
+    width: 20px;
+    bottom: 10%;
+    animation: mooving 1500ms infinite;
+  }
+  & > span:nth-child(3) {
+    top: 60%;
+    animation: mooving 2000ms infinite;
+  }
+  & > span:nth-child(3) {
+    width: 45px;
+    top: 40%;
+    animation: mooving 800ms infinite;
+  }
+  & > span:nth-child(4) {
+    width: 10px;
+    top: 20%;
+    animation: mooving 3000ms infinite;
+  }
+}
+
+@keyframes mooving {
+  from {
+    right: 0;
+  }
+  to {
+    right: 100%;
+    opacity: 0;
+  }
+}

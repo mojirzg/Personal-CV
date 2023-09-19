@@ -42,7 +42,7 @@ export const NavMenu: FunctionComponent<Props> = () => {
   return (
     <div
       className={
-        "md:w-fit fixed md:mx-auto left-0 right-0 bottom-4 md:bottom-16 rounded-lg border-4 border-solid border-border-menu bg-background-menu backdrop-blur-md gap-6 py-3 px-[16px] z-50 flex"
+        "items-center md:w-fit fixed md:mx-auto left-0 right-0 bottom-4 md:bottom-16 rounded-lg border-4 border-solid border-border-menu bg-background-menu backdrop-blur-md gap-6 py-3 px-[16px] z-50 flex"
       }
     >
       {NAV_MENU.map((item) => {
@@ -56,14 +56,10 @@ export const NavMenu: FunctionComponent<Props> = () => {
           </Link>
         );
       })}
-      <Image
-        className={
-          "cursor-pointer transition-transform duration-[0.1s] ease-[ease] hover:transition-transform hover:duration-[0.1s] hover:ease-[ease] hover:scale-110"
-        }
-        width={24}
-        height={24}
-        alt="Theme Switch button"
-        src={theme === "dark" ? "/svg/moon.svg" : "/svg/sun.svg"}
+      <i
+        className={`${
+          theme === "dark" ? "icon-moon" : "icon-sun"
+        } text-content-primary text-2xl cursor-pointer transition-transform duration-[0.1s] ease-[ease] hover:transition-transform hover:duration-[0.1s] hover:ease-[ease] hover:scale-110`}
         onClick={changeTheme}
       />
     </div>

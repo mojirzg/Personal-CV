@@ -49,15 +49,19 @@ button {
   color: var(--content-primary);
   transition: 0.25s;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: var(--surface-main);
     box-shadow: inset 0 0 0 2em var(--content-primary);
+  }
+
+  &:hover * {
+    color: var(--surface-main);
   }
 }
 
 @import "./colors";
 @import "./fonts";
+@import "./font-icon";
 
 @tailwind base;
 @tailwind components;

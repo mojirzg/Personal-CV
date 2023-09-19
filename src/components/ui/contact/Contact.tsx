@@ -1,20 +1,51 @@
 "use client";
-import React, { FunctionComponent } from "react";
+import React, { FormEvent, FunctionComponent, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button, Input, Textarya } from "@/components";
 import { CONTACT_INFO } from "@/consts";
 import Link from "next/link";
+import emailjs from "@emailjs/browser";
 
 interface Props {}
 
 export const Contact: FunctionComponent<Props> = () => {
+  const [loading, setLoading] = useState(false);
   const t = useTranslations();
+  const [text, setText] = useState(t("send"));
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+    e?.preventDefault();
+
+    setLoading(true);
+    setText(t("sending"));
+
+    if (!formRef || !formRef.current) return;
+    emailjs
+      .sendForm(
+        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string,
+        formRef.current,
+        process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY as string
+      )
+      .then((result) => {
+        setText(t("sent"));
+      })
+      .catch(() => {
+        setText(t("error"));
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   const LineDevider = ({ right = false }: { right?: boolean }) => {
     return (
       <div
         className={`md:h-[100%] h-[1px] md:w-[1px] w-[100%] absolute  r-0 line ${
-          right ? "top-0 right-auto md:right-0 " : "bottom-0 md:left-0"
+          right
+            ? " top-0 right-auto md:right-0 animation-delay-5_5 "
+            : " bottom-0 md:left-0 "
         }`}
       />
     );
@@ -27,18 +58,35 @@ export const Contact: FunctionComponent<Props> = () => {
           {t("contact")}
         </p>
         <p className="text-xl md:text3xl text-content-secondary">
-          {t("contactDetail")}
+          {t("contactDescription")}
         </p>
       </div>
-      <div className="flex flex-col items-center justify-center flex-1 gap-3 py-10 md:py-0  px-8 md:px-[120px] relative">
+      <div className="flex flex-col items-center justify-center flex-1  py-10 md:py-0  px-8 md:px-[120px] relative">
         <LineDevider />
-        <Input placeholder={t("yourName")} required />
-        <Input placeholder={t("yourEmail")} required />
-        <Textarya placeholder={t("yourMessage")} />
-        <Button className="self-end mt-6">{t("send")}</Button>
+        <form
+          className="flex flex-col w-full gap-3"
+          ref={formRef}
+          onSubmit={sendEmail}
+        >
+          <Input name="name" placeholder={t("yourName")} required />
+          <Input
+            name="email"
+            type="email"
+            placeholder={t("yourEmail")}
+            required
+          />
+          <Textarya name="message" placeholder={t("yourMessage")} />
+          <Button
+            className="self-end mt-6 uppercase"
+            type="submit"
+            loading={loading}
+          >
+            {text}
+          </Button>
+        </form>
         <LineDevider right />
       </div>
-      <div className="flex flex-col items-center justify-start flex-1 gap-4 md:ps-10 [&_a]:w-[160px] [&>p]:w-[160px]">
+      <div className="flex flex-col items-center justify-start flex-1 gap-4 md:ps-10 [&>a]:w-[160px] [&>p]:w-[160px]">
         <p className="text-base uppercase text-content-secondary ">
           {t("contactInfo")}
         </p>
@@ -54,9 +102,17 @@ export const Contact: FunctionComponent<Props> = () => {
         >
           {CONTACT_INFO.phone}
         </Link>
-        <div className="flex flex-1 gap-[10px] justify-start items-center">
-          {/* <p>T</p> */}
-          {/* <p>L</p> */}
+        <div className="flex flex-1 gap-[10px] justify-start items-center w-[160px]">
+          <Link href={CONTACT_INFO.telegram}>
+            <i
+              className={`icon-telegram text-content-secondary text-2xl cursor-pointer transition-transform duration-[0.1s] ease-[ease] hover:transition-transform hover:duration-[0.1s] hover:ease-[ease] hover:scale-110`}
+            />
+          </Link>
+          <Link href={CONTACT_INFO.whatsapp}>
+            <i
+              className={`icon-whatsapp text-content-secondary text-2xl cursor-pointer transition-transform duration-[0.1s] ease-[ease] hover:transition-transform hover:duration-[0.1s] hover:ease-[ease] hover:scale-110`}
+            />
+          </Link>
         </div>
         <p className="text-base text-content-secondary mt-[55px] uppercase ">
           {t("socials")}
