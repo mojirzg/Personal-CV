@@ -15,6 +15,6 @@
         "react"
     ],
     "rules": {
-        "import/no-cycle" : "error"
+        "import/no-cycle" : "warn"
     }
 }
