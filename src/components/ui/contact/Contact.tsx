@@ -52,7 +52,10 @@ export const Contact: FunctionComponent<Props> = () => {
   };
 
   return (
-    <div className="flex gap-y-10  relative flex-col md:flex-row pt-[32px] md:pt-[93px] pb-[132px] md:pb-[93px] md:px-[120px] columns-1 md:columns-3 px-4 h-fit">
+    <div
+      id="contact"
+      className="flex gap-y-10  relative flex-col md:flex-row pt-[32px] md:pt-[93px] pb-[132px] md:pb-[93px] md:px-[120px] columns-1 md:columns-3 px-4 h-fit"
+    >
       <div className="flex flex-col flex-1 gap-4 md:pe-10">
         <p className="text-5xl md:text6xl text-content-secondary">
           {t("contact")}

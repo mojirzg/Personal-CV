@@ -94,6 +94,7 @@ export const HomeInfo: FunctionComponent<Props> = () => {
 
   return (
     <div
+      id="about"
       className={
         "flex justify-center md:justify-start h-screen items-center flex-col gap-8 md:pt-[83px]"
       }

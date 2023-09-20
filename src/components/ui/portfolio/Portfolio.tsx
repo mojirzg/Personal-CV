@@ -41,7 +41,10 @@ const items = [
 export const Portfolio: FunctionComponent<Props> = () => {
   const t = useTranslations();
   return (
-    <div className="flex md:gap-44 px-4 md:px-[120px] md:pt-[56px] relative">
+    <div
+      id="portfolio"
+      className="flex md:gap-44 px-4 md:px-[120px] md:pt-[56px] relative"
+    >
       <p className="sticky items-center justify-center text-center portfolio-text md:top-7 md:flex">
         {t("portfolio")}
       </p>
