@@ -48,7 +48,7 @@ export const Portfolio: FunctionComponent<Props> = () => {
       <p className="sticky items-center justify-center text-center portfolio-text md:top-7 md:flex">
         {t("portfolio")}
       </p>
-      <div className="w-full gap-4 space-y-4 columns-2">
+      <div className="w-full gap-4 space-y-4 md:columns-2">
         {items.map((item, index) => (
           <div
             className="relative flex flex-col w-full overflow-hidden transition-all duration-100 rounded-md hover:scale-105 bg-background-card"
