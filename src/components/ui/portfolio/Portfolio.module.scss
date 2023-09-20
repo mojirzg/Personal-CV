@@ -1,0 +1,31 @@
+.background {
+  display: none;
+  transform: translateY(100%);
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  top: 0;
+  animation: scrollDown 10s forwards;
+}
+
+.imageContainer {
+  &:hover .thumbnail {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all 300ms ease;
+  }
+
+  &:hover .background {
+    display: block;
+    transform: translateY(0);
+    transition: all 300ms ease;
+    animation: scrollDown 10s forwards;
+  }
+}
+
+@keyframes scrollDown {
+  to {
+    object-position: bottom;
+  }
+}
