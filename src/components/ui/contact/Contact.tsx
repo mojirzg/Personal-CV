@@ -8,6 +8,13 @@ import emailjs from "@emailjs/browser";
 
 interface Props {}
 
+const SOCIALS_DETAILS = [
+  { link: CONTACT_INFO.linkedIn, name: "linkedIn" },
+  { link: CONTACT_INFO.github, name: "github" },
+  { link: CONTACT_INFO.gitlab, name: "gitlab" },
+  { link: CONTACT_INFO.instagram, name: "instagram" },
+];
+
 export const Contact: FunctionComponent<Props> = () => {
   const [loading, setLoading] = useState(false);
   const t = useTranslations();
@@ -100,18 +107,18 @@ export const Contact: FunctionComponent<Props> = () => {
           {CONTACT_INFO.email}
         </Link>
         <Link
-          href={`tell:${CONTACT_INFO.phone}`}
+          href={`tell:${CONTACT_INFO.phone.replaceAll(" ", "")}`}
           className="text-lg font-bold text-content-primary"
         >
           {CONTACT_INFO.phone}
         </Link>
         <div className="flex flex-1 gap-[10px] justify-start items-center w-[160px]">
-          <Link href={CONTACT_INFO.telegram}>
+          <Link target="_blank" href={CONTACT_INFO.telegram}>
             <i
               className={`icon-telegram text-content-secondary text-2xl cursor-pointer transition-transform duration-[0.1s] ease-[ease] hover:transition-transform hover:duration-[0.1s] hover:ease-[ease] hover:scale-110`}
             />
           </Link>
-          <Link href={CONTACT_INFO.whatsapp}>
+          <Link target="_blank" href={CONTACT_INFO.whatsapp}>
             <i
               className={`icon-whatsapp text-content-secondary text-2xl cursor-pointer transition-transform duration-[0.1s] ease-[ease] hover:transition-transform hover:duration-[0.1s] hover:ease-[ease] hover:scale-110`}
             />
@@ -120,30 +127,16 @@ export const Contact: FunctionComponent<Props> = () => {
         <p className="text-base text-content-secondary mt-[55px] uppercase ">
           {t("socials")}
         </p>
-        <Link
-          href={CONTACT_INFO.linkedIn}
-          className="text-lg font-bold text-content-primary"
-        >
-          {t("linkedIn")}
-        </Link>
-        <Link
-          href={CONTACT_INFO.github}
-          className="text-lg font-bold text-content-primary"
-        >
-          {t("github")}
-        </Link>
-        <Link
-          href={CONTACT_INFO.gitlab}
-          className="text-lg font-bold text-content-primary"
-        >
-          {t("gitlab")}
-        </Link>
-        <Link
-          href={CONTACT_INFO.instagram}
-          className="text-lg font-bold text-content-primary "
-        >
-          {t("instagram")}
-        </Link>
+        {SOCIALS_DETAILS.map((item) => (
+          <Link
+            target="_blank"
+            key={item.link}
+            href={item.link}
+            className="text-lg font-bold text-content-primary"
+          >
+            {t(item.name as keyof Messages)}
+          </Link>
+        ))}
       </div>
     </div>
   );
