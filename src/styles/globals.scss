@@ -1,3 +1,4 @@
+@use "sass:meta";
 html {
   width: 100vw;
   overflow-x: hidden;
@@ -39,8 +40,8 @@ p {
   line-height: 22px;
 }
 
-@import "./colors";
-@import "./fonts";
+@include meta.load-css("colors");
+@include meta.load-css("fonts");
 
 @tailwind base;
 @tailwind components;

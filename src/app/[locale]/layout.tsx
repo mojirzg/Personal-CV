@@ -14,9 +14,9 @@ const SatoshiFont = localFont({
 
 interface Props {
   children: React.ReactNode;
-  params: {
+  params: Promise<{
     locale: "en-US";
-  };
+  }>;
 }
 
 export const metadata: Metadata = {
@@ -29,23 +29,24 @@ export function generateStaticParams() {
 }
 
 export default async function RootLayout({ children, params }: Props) {
+  const {locale} = await params
   let messages;
   try {
-    messages = (await import(`@/messages/${params.locale}.json`)).default;
+    messages = (await import(`@/messages/${locale}.json`)).default;
   } catch (error) {
     console.error(error);
   }
   return (
     <html
       dir="ltr"
-      lang={params.locale}
+      lang={locale}
       className={`${SatoshiFont.variable} font-satoshi dark snap-y`}
     >
       <Script src="/bg-animation.js" />
       <body>
         <canvas id="mosaicCanvas" />
         <main>
-          <NextIntlClientProvider locale={params.locale} messages={messages}>
+          <NextIntlClientProvider locale={locale} messages={messages}>
             {/* <PageContainer>{children}</PageContainer> */}
             {children}
           </NextIntlClientProvider>
