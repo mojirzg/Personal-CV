@@ -9,12 +9,12 @@ interface Props {}
 
 export const NavMenu: FunctionComponent<Props> = () => {
   const t = useTranslations();
-  const [theme, setTheme] = useState<string>();
+  
+  const [theme, setTheme] = useState(() => {
+  if (typeof window === "undefined") return "light";
+  return localStorage.getItem("theme") || "light";
+});
 
-  useEffect(() => {
-    if (!window) return;
-    initTheme();
-  }, []);
 
   useEffect(() => {
     if (theme) {
@@ -26,14 +26,6 @@ export const NavMenu: FunctionComponent<Props> = () => {
     }
   }, [theme]);
 
-  function initTheme() {
-    const theme = localStorage.getItem("theme") || "light";
-    setTheme(theme);
-    document.documentElement.classList.remove(
-      theme === "dark" ? "dark" : "light"
-    );
-    document.documentElement.classList.add(theme);
-  }
 
   function changeTheme() {
     setTheme((theme) => (theme === "dark" ? "light" : "dark"));

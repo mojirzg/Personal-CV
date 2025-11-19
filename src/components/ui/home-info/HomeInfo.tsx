@@ -31,6 +31,14 @@ export const HomeInfo: FunctionComponent<Props> = () => {
   }, []);
 
   useEffect(() => {
+
+    function followMouse(e: MouseEvent) {
+      if (imageRef && imageRef.current) {
+        imageRef.current.style.left = e.x + 10 + "px";
+        imageRef.current.style.top = e.y + 10 + "px";
+      }
+    }
+
     document.addEventListener("pointermove", followMouse);
     if (imageRef?.current?.style.display === "block") {
       document.addEventListener("pointermove", followMouse);
@@ -40,12 +48,7 @@ export const HomeInfo: FunctionComponent<Props> = () => {
     };
   }, [imageRef]);
 
-  function followMouse(e: MouseEvent) {
-    if (imageRef && imageRef.current) {
-      imageRef.current.style.left = e.x + 10 + "px";
-      imageRef.current.style.top = e.y + 10 + "px";
-    }
-  }
+ 
 
   return (
     <div
