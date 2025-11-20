@@ -1,6 +1,5 @@
 "use client";
-import { HtmlProps } from "next/dist/shared/lib/html-context";
-import React, {
+import {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
   FunctionComponent,

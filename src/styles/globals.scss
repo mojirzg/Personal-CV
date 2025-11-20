@@ -1,4 +1,7 @@
 @use "sass:meta";
+@use "tailwindcss";
+
+
 html {
   width: 100vw;
   overflow-x: hidden;
@@ -17,6 +20,8 @@ body {
   ); /* Background color for the entire page */
   position: relative;
 }
+
+
 
 canvas {
   display: block;
@@ -40,12 +45,9 @@ p {
   line-height: 22px;
 }
 
+/* IMPORTS COLORS + FONTS */
 @include meta.load-css("colors");
 @include meta.load-css("fonts");
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 .animation-delay-2 {
   animation-delay: 2s;
@@ -80,3 +82,6 @@ p {
     font-size: 60px;
   }
 }
+
+
+
