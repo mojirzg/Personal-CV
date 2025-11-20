@@ -12,7 +12,6 @@ const animatePosition = {
   y: getRandomInt(0, innerHeight),
 };
 
-console.log({ animatePosition });
 
 const mouse = {
   x: innerWidth / 2,
@@ -108,7 +107,6 @@ function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
   isDarkMode = localStorage.getItem("theme") === "dark";
-
   squares.forEach((item) => {
     item.update();
   });

@@ -5,12 +5,16 @@ import { useEffect, useState } from "react";
 type ThemeType = "DarkMode" | "LightMode";
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState<ThemeType | null>(null);
+  
+  const [theme, setTheme] = useState<ThemeType>(() => {
+  if (typeof window === "undefined") return "LightMode"; // fallback for SSR
+  return (localStorage.getItem("theme") || "LightMode") as ThemeType;
+});
 
   useEffect(() => {
-    if (!window) return;
-    initTheme();
-  }, []);
+  document.documentElement.className = "";
+  document.documentElement.classList.add(theme);
+}, [theme]);
 
   useEffect(() => {
     if (theme) {
@@ -20,12 +24,7 @@ export const useTheme = () => {
     }
   }, [theme]);
 
-  function initTheme() {
-    const theme = (localStorage.getItem("theme") || "LightMode") as ThemeType;
-    setTheme(theme);
-    document.documentElement.className = "";
-    document.documentElement.classList.add(theme);
-  }
+
 
   function changeTheme() {
     setTheme((theme) => (theme === "DarkMode" ? "LightMode" : "DarkMode"));

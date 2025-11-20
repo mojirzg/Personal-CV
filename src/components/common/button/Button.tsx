@@ -1,5 +1,5 @@
 "use client";
-import React, {
+import {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
   FunctionComponent,

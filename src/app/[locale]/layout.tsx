@@ -1,10 +1,12 @@
 import React from "react";
 import "@/styles/globals.scss";
 import Script from "next/script";
-import { PageContainer } from "@/components";
-import { NextIntlClientProvider } from "next-intl";
 import localFont from "next/font/local";
 import type { Metadata } from "next";
+import {hasLocale, NextIntlClientProvider} from 'next-intl'
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+
 
 const SatoshiFont = localFont({
   src: "../../../public/font/Satoshi-Variable.ttf",
@@ -12,41 +14,33 @@ const SatoshiFont = localFont({
   display: "swap",
 });
 
-interface Props {
+type Props = {
   children: React.ReactNode;
-  params: {
-    locale: "en-US";
-  };
-}
+  params: Promise<{locale: string}>;
+};
+ 
 
 export const metadata: Metadata = {
   title: "Mojtaba Razaghi",
   description: "Frontend Developer",
 };
 
-export function generateStaticParams() {
-  return [{ locale: "en" }, { locale: "de" }];
-}
-
-export default async function RootLayout({ children, params }: Props) {
-  let messages;
-  try {
-    messages = (await import(`@/messages/${params.locale}.json`)).default;
-  } catch (error) {
-    console.error(error);
+export default async function RootLayout({children, params}: Props) {
+  const {locale} = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
   }
+
   return (
     <html
       dir="ltr"
-      lang={params.locale}
-      className={`${SatoshiFont.variable} font-satoshi dark snap-y`}
+      className={`${SatoshiFont.variable} font-satoshi dark snap-y px-10`}
     >
       <Script src="/bg-animation.js" />
       <body>
         <canvas id="mosaicCanvas" />
         <main>
-          <NextIntlClientProvider locale={params.locale} messages={messages}>
-            {/* <PageContainer>{children}</PageContainer> */}
+          <NextIntlClientProvider>
             {children}
           </NextIntlClientProvider>
         </main>

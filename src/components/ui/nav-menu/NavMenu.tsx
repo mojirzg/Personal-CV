@@ -9,12 +9,12 @@ interface Props {}
 
 export const NavMenu: FunctionComponent<Props> = () => {
   const t = useTranslations();
-  const [theme, setTheme] = useState<string>();
+  
+  const [theme, setTheme] = useState(() => {
+  if (typeof window === "undefined") return "light";
+  return localStorage.getItem("theme") || "light";
+});
 
-  useEffect(() => {
-    if (!window) return;
-    initTheme();
-  }, []);
 
   useEffect(() => {
     if (theme) {
@@ -26,14 +26,6 @@ export const NavMenu: FunctionComponent<Props> = () => {
     }
   }, [theme]);
 
-  function initTheme() {
-    const theme = localStorage.getItem("theme") || "light";
-    setTheme(theme);
-    document.documentElement.classList.remove(
-      theme === "dark" ? "dark" : "light"
-    );
-    document.documentElement.classList.add(theme);
-  }
 
   function changeTheme() {
     setTheme((theme) => (theme === "dark" ? "light" : "dark"));
@@ -50,7 +42,7 @@ export const NavMenu: FunctionComponent<Props> = () => {
           <Link key={item.name} href={item.link}>
             <div className={"no-underline gap-1.5 pt-1.5 pb-0 px-2"}>
               <p className="transition-all duration-[0.3s] ease-[ease] m-0 px-0 py-1 hover:border-b border-solid hover:border-b-content-primary border-b border-b-transparent">
-                {t(item.name as keyof Messages)}
+                {t(item.name)}
               </p>
             </div>
           </Link>
