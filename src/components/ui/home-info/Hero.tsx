@@ -3,7 +3,7 @@ import { FunctionComponent, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
-export const HomeInfo: FunctionComponent = () => {
+export const Hero: FunctionComponent = () => {
   const t = useTranslations();
   const imageRef = useRef<HTMLImageElement>(null);
 
@@ -28,20 +28,20 @@ export const HomeInfo: FunctionComponent = () => {
     <div
       id="about"
       className={
-        'flex justify-center md:justify-start h-screen items-center flex-col gap-8 md:pt-[83px]'
+        'flex md:justify-center md:justify-start h-screen items-center flex-col gap-8 md:pt-[83px] pt-10'
       }
     >
-      <div className="flex items-center justify-around w-full">
-        <div className="flex flex-col gap-4">
-          <span className="flex gap-2 text-4xl font-bold">
+      <div className="flex flex-col-reverse md:flex-row items-center justify-around w-full">
+        <div className="flex flex-col gap-4 px-8">
+          <span className="flex gap-2 text-4xl font-bold mt-8">
             <p className="">{t('homeGreetings')} </p>
             <h1>{t('NAME')}</h1>
           </span>
-          <p>{t('expertice')}</p>
-          <p className="max-w-[500px]">{t('homeDescription')}</p>
+          <p className="text-sm -mt-2 opacity-70">{t('expertice')}</p>
+          <p className="md:max-w-[500px]">{t('homeDescription')}</p>
         </div>
         <Image
-          className="rounded-full shadow-xl"
+          className="rounded-full shadow-xl w-64 h-64 lg:w-[30vw] h-[auto] aspect-square"
           src="/images/me.jpg"
           ref={imageRef}
           alt="a"

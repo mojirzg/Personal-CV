@@ -11,7 +11,7 @@ export default function Variants() {
   const { height } = useDimensions(containerRef);
 
   return (
-    <div className="absolute left-0 top-2">
+    <div className="absolute left-0 top-2 hidden">
       <div className="relative">
         <div style={container}>
           <motion.nav
