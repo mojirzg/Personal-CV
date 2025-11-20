@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@tailwindcss/postcss": "^4.1.17",
     "@types/react-dom": "19.2.3",
     "autoprefixer": "^10.4.22",
+    "motion": "^12.23.24",
     "next": "16.0.3",
     "next-intl": "^4.5.5",
     "postcss": "^8.5.6",
@@ -25,6 +27,9 @@
     "@types/react": "19.2.6",
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.6.2",
     "typescript": "5.9.3"
   },
   "overrides": {

@@ -36,16 +36,6 @@ a {
   text-decoration: inherit;
 }
 
-p {
-  color: var(--content-primary, #fff);
-  /* lable/16 Med */
-  font-family: "Satoshi Variable";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 22px;
-}
-
 /* IMPORTS COLORS + FONTS */
 @include meta.load-css("colors");
 @include meta.load-css("fonts");
@@ -61,27 +51,6 @@ p {
 }
 .animation-duration-1_5 {
   animation-duration: 1.5s;
-}
-
-.portfolio-text {
-  font-size: 152px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  writing-mode: vertical-lr;
-  transform: rotate(180deg);
-  text-orientation: sideways;
-  display: inline-block;
-  color: #fff; /* fallback */
-  background: var(--portfolio-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
-
-  @media (max-width: 960px) {
-    font-size: 60px;
-  }
 }
 
 

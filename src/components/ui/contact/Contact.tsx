@@ -1,31 +1,31 @@
-"use client";
-import React, { FormEvent, FunctionComponent, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
-import { Button, Input, Textarya } from "@/components";
-import { CONTACT_INFO } from "@/consts";
-import Link from "next/link";
-import emailjs from "@emailjs/browser";
+'use client';
+import { FormEvent, FunctionComponent, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { Button, Input, Textarya } from '@/components';
+import { CONTACT_INFO } from '@/consts';
+import Link from 'next/link';
+import emailjs from '@emailjs/browser';
 
 interface Props {}
 
 const SOCIALS_DETAILS = [
-  { link: CONTACT_INFO.linkedIn, name: "linkedIn" },
-  { link: CONTACT_INFO.github, name: "github" },
-  { link: CONTACT_INFO.gitlab, name: "gitlab" },
-  { link: CONTACT_INFO.instagram, name: "instagram" },
+  { link: CONTACT_INFO.linkedIn, name: 'linkedIn' },
+  { link: CONTACT_INFO.github, name: 'github' },
+  { link: CONTACT_INFO.gitlab, name: 'gitlab' },
+  { link: CONTACT_INFO.instagram, name: 'instagram' },
 ];
 
 export const Contact: FunctionComponent<Props> = () => {
   const [loading, setLoading] = useState(false);
   const t = useTranslations();
-  const [text, setText] = useState(t("send"));
+  const [text, setText] = useState(t('send'));
   const formRef = useRef<HTMLFormElement>(null);
 
   const sendEmail = (e: FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
 
     setLoading(true);
-    setText(t("sending"));
+    setText(t('sending'));
 
     if (!formRef || !formRef.current) return;
     emailjs
@@ -33,29 +33,17 @@ export const Contact: FunctionComponent<Props> = () => {
         process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string,
         process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string,
         formRef.current,
-        process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY as string
+        process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY as string,
       )
       .then((result) => {
-        setText(t("sent"));
+        setText(t('sent'));
       })
       .catch(() => {
-        setText(t("error"));
+        setText(t('error'));
       })
       .finally(() => {
         setLoading(false);
       });
-  };
-
-  const LineDevider = ({ right = false }: { right?: boolean }) => {
-    return (
-      <div
-        className={`md:h-[100%] h-[1px] md:w-[1px] w-[100%] absolute  r-0 line ${
-          right
-            ? " top-0 right-auto md:right-0 animation-delay-5_5 "
-            : " bottom-0 md:left-0 "
-        }`}
-      />
-    );
   };
 
   return (
@@ -65,10 +53,10 @@ export const Contact: FunctionComponent<Props> = () => {
     >
       <div className="flex flex-col flex-1 gap-4 md:pe-10">
         <p className="text-5xl md:text6xl text-content-secondary">
-          {t("contact")}
+          {t('contact')}
         </p>
         <p className="text-xl md:text3xl text-content-secondary">
-          {t("contactDescription")}
+          {t('contactDescription')}
         </p>
       </div>
       <div className="flex flex-col items-center justify-center flex-1  py-10 md:py-0  px-8 md:px-[120px] relative">
@@ -78,14 +66,14 @@ export const Contact: FunctionComponent<Props> = () => {
           ref={formRef}
           onSubmit={sendEmail}
         >
-          <Input name="name" placeholder={t("yourName")} required />
+          <Input name="name" placeholder={t('yourName')} required />
           <Input
             name="email"
             type="email"
-            placeholder={t("yourEmail")}
+            placeholder={t('yourEmail')}
             required
           />
-          <Textarya name="message" placeholder={t("yourMessage")} />
+          <Textarya name="message" placeholder={t('yourMessage')} />
           <Button
             className="self-end mt-6 uppercase"
             type="submit"
@@ -98,7 +86,7 @@ export const Contact: FunctionComponent<Props> = () => {
       </div>
       <div className="flex flex-col items-center justify-start flex-1 gap-4 md:ps-10 [&>a]:w-[160px] [&>p]:w-[160px]">
         <p className="text-base uppercase text-content-secondary ">
-          {t("contactInfo")}
+          {t('contactInfo')}
         </p>
         <Link
           href={`mailto:${CONTACT_INFO.email}`}
@@ -107,7 +95,7 @@ export const Contact: FunctionComponent<Props> = () => {
           {CONTACT_INFO.email}
         </Link>
         <Link
-          href={`tell:${CONTACT_INFO.phone.replaceAll(" ", "")}`}
+          href={`tell:${CONTACT_INFO.phone.replaceAll(' ', '')}`}
           className="text-lg font-bold text-content-primary"
         >
           {CONTACT_INFO.phone}
@@ -125,7 +113,7 @@ export const Contact: FunctionComponent<Props> = () => {
           </Link>
         </div>
         <p className="text-base text-content-secondary mt-[55px] uppercase ">
-          {t("socials")}
+          {t('socials')}
         </p>
         {SOCIALS_DETAILS.map((item) => (
           <Link
@@ -134,7 +122,7 @@ export const Contact: FunctionComponent<Props> = () => {
             href={item.link}
             className="text-lg font-bold text-content-primary"
           >
-            {t(item.name as keyof Messages)}
+            {t(item.name)}
           </Link>
         ))}
       </div>
@@ -143,3 +131,15 @@ export const Contact: FunctionComponent<Props> = () => {
 };
 
 export default Contact;
+
+const LineDevider = ({ right = false }: { right?: boolean }) => {
+  return (
+    <div
+      className={`md:h-[100%] h-[1px] md:w-[1px] w-[100%] absolute  r-0 line ${
+        right
+          ? ' top-0 right-auto md:right-0 animation-delay-5_5 '
+          : ' bottom-0 md:left-0 '
+      }`}
+    />
+  );
+};

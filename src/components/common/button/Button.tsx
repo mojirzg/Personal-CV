@@ -7,11 +7,10 @@ import {
 // eslint-disable-next-line import/no-cycle
 import { Loading } from "@/components";
 
-interface ButtonProps
-  extends DetailedHTMLProps<
+type ButtonProps = DetailedHTMLProps<
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
-  > {}
+  >
 
 interface Props {
   loading?: boolean;
