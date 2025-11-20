@@ -1,40 +1,40 @@
-"use client";
-import React, { FunctionComponent } from "react";
-import { useTranslations } from "next-intl";
-import Image from "next/image";
-import Link from "next/link";
-import Styles from "./Portfolio.module.scss";
+'use client';
+import React, { FunctionComponent } from 'react';
+import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import Link from 'next/link';
+import Styles from './Portfolio.module.scss';
 
 interface Props {}
 
 const items = [
   {
-    image: "/images/portfolio/zhin/logo.jpg",
-    background: "/images/portfolio/zhin/home.jpg",
-    name: "Zhin Tour",
-    description: "Next.js Express.js",
-    link: "https://zhintour.com",
+    image: '/images/portfolio/zhin/logo.jpg',
+    background: '/images/portfolio/zhin/home.jpg',
+    name: 'Zhin Tour',
+    description: 'Next.js Express.js',
+    link: 'https://zhintour.com',
   },
   {
-    image: "/images/portfolio/kss/logo.jpg",
-    background: "/images/portfolio/kss/home.jpg",
-    name: "Kizeshe Sabze Shomal",
-    description: "Next.js Express.js",
-    link: "https://kssapp.ir",
+    image: '/images/portfolio/kss/logo.jpg',
+    background: '/images/portfolio/kss/home.jpg',
+    name: 'Kizeshe Sabze Shomal',
+    description: 'Next.js Express.js',
+    link: 'https://kssapp.ir',
   },
   {
-    image: "/images/portfolio/almas/logo.jpg",
-    background: "/images/portfolio/almas/home.jpg",
-    name: "Almas Karimkhan",
-    description: "Next.js",
-    link: "https://almaskarimkhan.com",
+    image: '/images/portfolio/almas/logo.jpg',
+    background: '/images/portfolio/almas/home.jpg',
+    name: 'Almas Karimkhan',
+    description: 'Next.js',
+    link: 'https://almaskarimkhan.com',
   },
   {
-    image: "/images/portfolio/chainwall/logo.jpg",
-    background: "/images/portfolio/chainwall/home.jpg",
-    name: "Chainwall",
-    description: "Next.js Nest.js",
-    link: "https://chainwall.io",
+    image: '/images/portfolio/chainwall/logo.jpg',
+    background: '/images/portfolio/chainwall/home.jpg',
+    name: 'Chainwall',
+    description: 'Next.js Nest.js',
+    link: 'https://chainwall.io',
   },
 ];
 
@@ -46,7 +46,7 @@ export const Portfolio: FunctionComponent<Props> = () => {
       className="flex md:gap-44 px-4 md:px-[120px] md:pt-[56px] relative"
     >
       <p className="sticky items-center justify-center text-center portfolio-text md:top-7 md:flex">
-        {t("portfolio")}
+        {t('portfolio')}
       </p>
       <div className="w-full gap-4 space-y-4 md:columns-2">
         {items.map((item, index) => (

@@ -1,23 +1,23 @@
-"use client";
+'use client';
 import {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
   FunctionComponent,
-} from "react";
+} from 'react';
 // eslint-disable-next-line import/no-cycle
-import { Loading } from "@/components";
+import { Loading } from '@/components';
 
 type ButtonProps = DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  >
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>;
 
 interface Props {
   loading?: boolean;
 }
 
 const BUTTON_DEFAULT_STYLE =
-  "rounded-lg p-3 relative border min-w-[100px] border-border-button text-content-primary";
+  'rounded-lg p-3 relative border min-w-[100px] border-border-button text-content-primary';
 
 export const Button: FunctionComponent<ButtonProps & Props> = ({
   className,

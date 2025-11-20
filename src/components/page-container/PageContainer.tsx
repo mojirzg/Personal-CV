@@ -1,5 +1,5 @@
-"use client";
-import React, { FunctionComponent } from "react";
+'use client';
+import React, { FunctionComponent } from 'react';
 // import Styles from "./PageContainer.module.scss";
 
 interface Props {

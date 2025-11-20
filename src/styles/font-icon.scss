@@ -1,19 +1,20 @@
 @font-face {
-  font-family: "icomoon";
-  src: url("/font/icomoon.eot?lhhags");
-  src: url("/font/icomoon.eot?lhhags#iefix") format("embedded-opentype"),
-    url("/font/icomoon.ttf?lhhags") format("truetype"),
-    url("/font/icomoon.woff?lhhags") format("woff"),
-    url("/font/icomoon.svg?lhhags#icomoon") format("svg");
+  font-family: 'icomoon';
+  src: url('/font/icomoon.eot?lhhags');
+  src:
+    url('/font/icomoon.eot?lhhags#iefix') format('embedded-opentype'),
+    url('/font/icomoon.ttf?lhhags') format('truetype'),
+    url('/font/icomoon.woff?lhhags') format('woff'),
+    url('/font/icomoon.svg?lhhags#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"],
-[class*=" icon-"] {
+[class^='icon-'],
+[class*=' icon-'] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "icomoon" !important;
+  font-family: 'icomoon' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -30,20 +31,20 @@
 }
 
 .icon-check:before {
-  content: "\e900";
+  content: '\e900';
 }
 .icon-send:before {
-  content: "\e905";
+  content: '\e905';
 }
 .icon-telegram:before {
-  content: "\e901";
+  content: '\e901';
 }
 .icon-whatsapp:before {
-  content: "\e902";
+  content: '\e902';
 }
 .icon-moon:before {
-  content: "\e903";
+  content: '\e903';
 }
 .icon-sun:before {
-  content: "\e904";
+  content: '\e904';
 }

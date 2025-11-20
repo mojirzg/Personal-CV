@@ -1,6 +1,5 @@
-@use "sass:meta";
-@use "tailwindcss";
-
+@use 'sass:meta';
+@use 'tailwindcss';
 
 html {
   width: 100vw;
@@ -22,8 +21,6 @@ body {
   position: relative;
 }
 
-
-
 canvas {
   display: block;
   background-color: transparent; /* Make the canvas background transparent */
@@ -37,8 +34,8 @@ a {
 }
 
 /* IMPORTS COLORS + FONTS */
-@include meta.load-css("colors");
-@include meta.load-css("fonts");
+@include meta.load-css('colors');
+@include meta.load-css('fonts');
 
 .animation-delay-2 {
   animation-delay: 2s;
@@ -52,6 +49,3 @@ a {
 .animation-duration-1_5 {
   animation-duration: 1.5s;
 }
-
-
-

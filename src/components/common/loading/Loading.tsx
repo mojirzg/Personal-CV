@@ -1,6 +1,6 @@
-"use client";
-import { useEffect, useRef } from "react";
-import Styles from "./Loading.module.scss";
+'use client';
+import { useEffect, useRef } from 'react';
+import Styles from './Loading.module.scss';
 
 interface LottieProps {
   show?: boolean;

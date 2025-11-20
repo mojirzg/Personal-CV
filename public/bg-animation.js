@@ -1,18 +1,15 @@
-const canvas = document.querySelector("canvas");
-const c = canvas.getContext("2d");
-let isDarkMode = localStorage.getItem("theme") === "dark";
+const canvas = document.querySelector('canvas');
+const c = canvas.getContext('2d');
+let isDarkMode = localStorage.getItem('theme') === 'dark';
 const squareSize = 52;
 
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
 let gridOffset = { x: 1, y: -1 };
-let gridDirection = { x: 1, y: 1 }; 
-const gridShiftStep = 0.06; 
-const gridShiftMax = squareSize / 4; 
-
-
-
+let gridDirection = { x: 1, y: 1 };
+const gridShiftStep = 0.06;
+const gridShiftMax = squareSize / 4;
 
 const mouse = {
   x: innerWidth / 2,
@@ -20,19 +17,19 @@ const mouse = {
 };
 
 // Event Listeners
-addEventListener("mousemove", (event) => {
+addEventListener('mousemove', (event) => {
   mouse.x = event.clientX;
   mouse.y = event.clientY + window.scrollY;
 });
 
-addEventListener("touchmove", (e) => {
+addEventListener('touchmove', (e) => {
   const event = e?.changedTouches?.[0];
   if (!event) return;
   mouse.x = event.clientX;
   mouse.y = event.clientY + window.scrollY;
 });
 
-addEventListener("resize", () => {
+addEventListener('resize', () => {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
 
@@ -61,7 +58,7 @@ class Square {
         squareY < distance &&
         squareY > -distance
       ) {
-        return (isDarkMode ? 1 / (i * 6) : 1 / (i * 5)) ;
+        return isDarkMode ? 1 / (i * 6) : 1 / (i * 5);
       }
     }
     this.pulse = 0;
@@ -94,7 +91,7 @@ function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
 
-  isDarkMode = localStorage.getItem("theme") === "dark";
+  isDarkMode = localStorage.getItem('theme') === 'dark';
 
   // Update grid offset for gentle auto shift
   gridOffset.x += gridShiftStep * gridDirection.x;
@@ -118,7 +115,6 @@ function animate() {
   });
 }
 
-
 let squares;
 function init() {
   squares = [];
@@ -134,7 +130,7 @@ function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
 
-  isDarkMode = localStorage.getItem("theme") === "dark";
+  isDarkMode = localStorage.getItem('theme') === 'dark';
 
   // Update grid offset for gentle auto shift
   gridOffset.x += gridShiftStep * gridDirection.x;

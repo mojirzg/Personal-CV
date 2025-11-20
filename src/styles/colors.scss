@@ -35,7 +35,7 @@
     --color-white-alpha-950: rgb(255, 255, 255);
   }
 
-  :root[class~="dark"] {
+  :root[class~='dark'] {
     --background-card: var(--color-white-alpha-50);
     --background-input: var(--color-neutral-900);
     --background-menu: var(--color-white-alpha-50);
@@ -58,7 +58,7 @@
     );
     --line-drop: rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%;
   }
-  :root[class~="light"] {
+  :root[class~='light'] {
     --background-card: var(--color-neutral-alpha-50);
     --background-input: var(--color-neutral-100);
     --background-menu: var(--color-neutral-alpha-50);
@@ -84,7 +84,7 @@
   }
 
   @media (max-width: 960px) {
-    :root[class~="dark"] {
+    :root[class~='dark'] {
       --line-gradient: linear-gradient(
         90deg,
         rgba(255, 255, 255, 0) -0.76%,
@@ -92,7 +92,7 @@
         rgba(255, 255, 255, 0) 100%
       );
     }
-    :root[class~="light"] {
+    :root[class~='light'] {
       --line-gradient: linear-gradient(
         90deg,
         rgba(23, 23, 23, 0) -0.76%,
