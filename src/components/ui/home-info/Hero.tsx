@@ -41,8 +41,8 @@ export const Hero: FunctionComponent = () => {
           <p className="md:max-w-[500px]">{t('homeDescription')}</p>
         </div>
         <Image
-          className="rounded-full shadow-xl w-64 h-64 lg:w-[30vw] h-[auto] aspect-square"
-          src="/images/me.jpg"
+          className="rounded-full bg-white shadow-xl w-64 h-64 lg:w-[30vw] h-[auto] aspect-square"
+          src="/images/Mojtaba Razaghi.webp"
           ref={imageRef}
           alt="a"
           width={500}

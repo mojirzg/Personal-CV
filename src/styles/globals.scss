@@ -37,6 +37,7 @@ a {
 /* IMPORTS COLORS + FONTS */
 @include meta.load-css('colors');
 @include meta.load-css('fonts');
+@include meta.load-css('font-icon');
 
 textarea,
 input {

@@ -4,7 +4,6 @@ import { useTranslations } from 'next-intl';
 import { Button, Input, Textarya } from '@/components';
 import { CONTACT_INFO } from '@/consts';
 import Link from 'next/link';
-import emailjs from '@emailjs/browser';
 
 interface Props {}
 
@@ -21,21 +20,29 @@ export const Contact: FunctionComponent<Props> = () => {
   const [text, setText] = useState(t('send'));
   const formRef = useRef<HTMLFormElement>(null);
 
-  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
 
     setLoading(true);
     setText(t('sending'));
 
-    if (!formRef || !formRef.current) return;
-    emailjs
-      .sendForm(
-        process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID as string,
-        process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID as string,
-        formRef.current,
-        process.env.NEXT_PUBLIC_EMAIL_PUBLIC_KEY as string,
-      )
-      .then((result) => {
+    const form = e.currentTarget;
+    if (!form) return;
+
+    const formData = {
+      name: (form.elements.namedItem('name') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      message: (form.elements.namedItem('message') as HTMLTextAreaElement)
+        .value,
+    };
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(() => {
         setText(t('sent'));
       })
       .catch(() => {
@@ -49,7 +56,7 @@ export const Contact: FunctionComponent<Props> = () => {
   return (
     <div
       id="contact"
-      className="flex gap-y-10  relative flex-col md:flex-row pt-[32px] md:pt-[93px] pb-[132px] md:pb-[93px] md:px-[120px] columns-1 md:columns-3 px-4 h-fit"
+      className="flex gap-y-10 relative flex-col md:flex-row pt-[32px] md:pt-[93px] pb-[132px] md:pb-[93px] md:px-[120px] columns-1 md:columns-3 px-4 h-fit"
     >
       <div className="flex flex-col flex-1 gap-4 md:pe-10">
         <p className="text-5xl md:text6xl text-content-secondary">
@@ -64,7 +71,7 @@ export const Contact: FunctionComponent<Props> = () => {
         <form
           className="flex flex-col w-full gap-3"
           ref={formRef}
-          onSubmit={sendEmail}
+          onSubmit={handleSubmit}
         >
           <Input name="name" placeholder={t('yourName')} required />
           <Input
@@ -84,7 +91,7 @@ export const Contact: FunctionComponent<Props> = () => {
         </form>
         <LineDevider right />
       </div>
-      <div className="flex flex-col items-center justify-start flex-1 gap-4 md:ps-10 [&>a]:w-[160px] [&>p]:w-[160px]">
+      <div className="flex flex-col items-start  ms:items-center justify-start flex-1 gap-4 md:ps-10 [&>a]:w-[160px] [&>p]:w-[160px]">
         <p className="text-base uppercase text-content-secondary ">
           {t('contactInfo')}
         </p>

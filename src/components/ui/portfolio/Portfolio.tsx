@@ -9,6 +9,13 @@ interface Props {}
 
 const items = [
   {
+    image: '/images/portfolio/umoja/logo.jpg',
+    background: '/images/portfolio/umoja/home.webp',
+    name: 'Edu Core Umoja',
+    description: 'Next.js ASP.NET',
+    link: 'https://www.shuwela.com/products/edu-core/umoja',
+  },
+  {
     image: '/images/portfolio/zhin/logo.jpg',
     background: '/images/portfolio/zhin/home.jpg',
     name: 'Zhin Tour',
@@ -21,6 +28,13 @@ const items = [
     name: 'Kizeshe Sabze Shomal',
     description: 'Next.js Express.js',
     link: 'https://kssapp.ir',
+  },
+  {
+    image: '/images/portfolio/datafactorrial/logo.jpg',
+    background: '/images/portfolio/datafactorrial/home.webp',
+    name: 'Datafactorial',
+    description: 'Next.js ASP.NET',
+    link: 'https://datafactorial.com',
   },
   {
     image: '/images/portfolio/almas/logo.jpg',

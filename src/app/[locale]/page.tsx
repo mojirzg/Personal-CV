@@ -10,7 +10,6 @@ export default function Home() {
       <Hero />
       <Portfolio />
       <Contact />
-      <div className="py-10" />
     </>
   );
 }
