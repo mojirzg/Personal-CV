@@ -38,6 +38,15 @@ a {
 @include meta.load-css('colors');
 @include meta.load-css('fonts');
 
+textarea,
+input {
+  background: transparent;
+  border: 1px solid var(--border-button) !important;
+  color: var(--content-primary) !important;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
 .animation-delay-2 {
   animation-delay: 2s;
 }

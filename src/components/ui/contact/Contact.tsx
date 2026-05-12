@@ -94,12 +94,12 @@ export const Contact: FunctionComponent<Props> = () => {
         >
           {CONTACT_INFO.email}
         </Link>
-        <Link
+        {/* <Link
           href={`tell:${CONTACT_INFO.phone.replaceAll(' ', '')}`}
           className="text-lg font-bold text-content-primary"
         >
           {CONTACT_INFO.phone}
-        </Link>
+        </Link> */}
         <div className="flex flex-1 gap-[10px] justify-start items-center w-[160px]">
           <Link target="_blank" href={CONTACT_INFO.telegram}>
             <i
