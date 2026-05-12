@@ -35,13 +35,13 @@ export default async function RootLayout({ children, params }: Props) {
       dir="ltr"
       className={`${SatoshiFont.variable} font-satoshi dark snap-y`}
     >
-      <Analytics />
       <Script src="/bg-animation.js" />
       <body>
         <canvas id="mosaicCanvas" />
         <main>
           <NextIntlClientProvider>{children}</NextIntlClientProvider>
         </main>
+        <Analytics />
       </body>
     </html>
   );
