@@ -11,6 +11,7 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.17",
     "@types/react-dom": "19.2.3",
+    "@vercel/analytics": "^2.0.1",
     "autoprefixer": "^10.4.22",
     "motion": "^12.23.24",
     "next": "16.0.10",

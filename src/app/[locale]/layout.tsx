@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { Analytics } from '@vercel/analytics/next';
 
 const SatoshiFont = localFont({
   src: '../../../public/font/Satoshi-Variable.ttf',
@@ -34,6 +35,7 @@ export default async function RootLayout({ children, params }: Props) {
       dir="ltr"
       className={`${SatoshiFont.variable} font-satoshi dark snap-y`}
     >
+      <Analytics />
       <Script src="/bg-animation.js" />
       <body>
         <canvas id="mosaicCanvas" />
