@@ -38,7 +38,7 @@ export const NavMenu: FunctionComponent<Props> = () => {
       {NAV_MENU.map((item) => {
         return (
           <Link key={item.name} href={item.link}>
-            <div className={'no-underline gap-1.5 pt-1.5 pb-0 px-2'}>
+            <div className={'no-underline gap-1.5 pb-0 px-2'}>
               <p className="transition-all duration-[0.3s] ease-[ease] m-0 px-0 py-1 hover:border-b border-solid hover:border-b-content-primary border-b border-b-transparent">
                 {t(item.name)}
               </p>
