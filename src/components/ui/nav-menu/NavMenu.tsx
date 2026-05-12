@@ -32,7 +32,7 @@ export const NavMenu: FunctionComponent<Props> = () => {
   return (
     <div
       className={
-        'items-center md:w-fit fixed md:mx-auto left-0 right-0 bottom-4 md:bottom-16 rounded-lg border-4 border-solid border-border-menu bg-background-menu backdrop-blur-md gap-6 py-3 px-[16px] z-50 flex'
+        'md:items-center md:w-fit fixed md:mx-auto md:left-0 md:right-0 left-2 right-4 bottom-4 md:bottom-16 rounded-lg border-4 border-solid border-border-menu bg-background-menu backdrop-blur-md gap-6 py-3 px-[16px] z-50 flex'
       }
     >
       {NAV_MENU.map((item) => {
